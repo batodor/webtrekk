@@ -1,0 +1,50 @@
+<div class="container">
+  <h3 mat-dialog-title>CustomerID: {{data.customerID}}</h3>
+
+  <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+
+    <div class="form" color="accent">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="First Name" [(ngModel)]="data.name.first" name="first" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Last Name" [(ngModel)]="data.name.last" name="last" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field class="example-full-width">
+        <input matInput [matDatepicker]="birthdayDatepicker" placeholder="Birthday" [(ngModel)]="data.birthday" name="birthday">
+        <mat-datepicker-toggle matSuffix [for]="birthdayDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #birthdayDatepicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    
+    <div class="form">
+      <mat-form-field class="example-full-width" >
+        <mat-select placeholder="Gender" [(ngModel)]="data.gender" name="gender" disableRipple >
+          <mat-option value="m">Man</mat-option>
+          <mat-option value="w">Woman</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field class="example-full-width">
+        <input matInput [matDatepicker]="lastContactDatepicker" placeholder="Last Contact" [(ngModel)]="data.lastContact" name="lastContact">
+        <mat-datepicker-toggle matSuffix [for]="lastContactDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #lastContactDatepicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions>
+      <button mat-raised-button color="primary" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="confirmEdit()">Save</button>
+      <button mat-raised-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+  </form>
+</div>

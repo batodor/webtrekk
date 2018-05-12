@@ -1,0 +1,53 @@
+<div class="container" *ngIf="customer">
+  <h1 mat-dialog-title>CustomerID: {{customer.customerID}}</h1>
+  <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+
+    <div class="form" color="accent">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="First Name" [(ngModel)]="customer.name.first" name="first" required [disabled]="!editMode">
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Last Name" [(ngModel)]="customer.name.last" name="last" required [disabled]="!editMode">
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field class="example-full-width">
+        <input matInput [matDatepicker]="birthdayDatepicker" placeholder="Birthday" [(ngModel)]="customer.birthday" name="birthday" [disabled]="!editMode">
+        <mat-datepicker-toggle matSuffix [for]="birthdayDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #birthdayDatepicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    
+    <div class="form">
+      <mat-form-field class="example-full-width" >
+        <mat-select placeholder="Gender" [(ngModel)]="customer.gender" name="gender" [disabled]="!editMode">
+          <mat-option value="m">Man</mat-option>
+          <mat-option value="w">Woman</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field class="example-full-width">
+        <input matInput [matDatepicker]="lastContactDatepicker" placeholder="Last Contact" [(ngModel)]="customer.lastContact" name="lastContact" [disabled]="!editMode">
+        <mat-datepicker-toggle matSuffix [for]="lastContactDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #lastContactDatepicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions>
+      <button mat-raised-button (click)="back()">Back</button>
+      <span class="fill-space"></span>
+      <button *ngIf="!editMode" mat-raised-button (click)="edit()" color="primary" >Edit</button>
+      <button *ngIf="editMode" mat-raised-button (click)="cancel(customer)" color="primary" >Cancel</button>
+      <button *ngIf="editMode" mat-raised-button color="primary" [type]="submit" [disabled]="!formControl.valid" (click)="confirmEdit(customer)">Save</button>
+    </div>
+  </form>
+</div>
+
