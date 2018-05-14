@@ -24,9 +24,8 @@ module.exports.listCustomers = function({}, callback) {
 };
 
 module.exports.addCustomer = function(newCustomer, callback) {
-	Customer.count({}, function(err, count) {
-		if (err) throw err;
-		newCustomer.customerID = count + 1;
+	Customer.findOne({}, {}, { sort: { created_at: -1 } }, function(err, lastCustomer) {
+		const newID = lastCustomer.customerID + 1;
 		newCustomer.save(callback);
 	});
 };
