@@ -4,11 +4,14 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class CustomerDetailService {
+	//private readonly API_URL = 'http://localhost:3000/customers/';
+	private readonly API_URL = 'customers/';
 	constructor(private http: Http) {}
 
 	getCustomer(id) {
 		let headers = new Headers();
+
 		headers.append('Content-Type', 'application/json');
-		return this.http.get('customers/' + id, { headers: headers }).map((res) => res.json());
+		return this.http.get(this.API_URL + 'profile/' + id, { headers: headers }).map((res) => res.json());
 	}
 }

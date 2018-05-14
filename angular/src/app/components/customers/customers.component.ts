@@ -48,7 +48,7 @@ export class CustomersComponent implements OnInit {
 	}
 
 	customerDetail(customerID: string) {
-		this.router.navigate([ '/customers/' + customerID ]);
+		this.router.navigate([ '/customers/profile/' + customerID ]);
 	}
 
 	addNew() {

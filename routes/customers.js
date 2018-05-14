@@ -4,7 +4,7 @@ const passport = require('passport');
 const Customer = require('../models/customer');
 
 // List customers
-router.get('/', (req, res, next) => {
+router.get('/list', (req, res, next) => {
 	Customer.listCustomers({}, (err, customers) => {
 		if (err) {
 			res.json({ message: 'Failed to list Customer' });
@@ -49,7 +49,7 @@ router.delete('/delete/:id', (req, res, next) => {
 	});
 });
 
-router.get('/:id', (req, res, next) => {
+router.get('/profile/:id', (req, res, next) => {
 	Customer.getCustomer(req.params.id, (err, customer) => {
 		if (err) {
 			res.json({ success: false, msg: 'Failed to load Customer' });

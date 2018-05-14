@@ -6,6 +6,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Injectable()
 export class CustomersService {
+	//private readonly API_URL = 'http://localhost:3000/customers/';
 	private readonly API_URL = 'customers/';
 	dataChange: BehaviorSubject<Customer[]> = new BehaviorSubject<Customer[]>([]);
 	dialogData: any;
@@ -21,7 +22,7 @@ export class CustomersService {
 	}
 
 	listCustomers() {
-		this.httpClient.get<Customer[]>(this.API_URL).subscribe(
+		this.httpClient.get<Customer[]>(this.API_URL + 'list').subscribe(
 			(data) => {
 				this.dataChange.next(data);
 			},
