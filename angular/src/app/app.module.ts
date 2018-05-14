@@ -50,7 +50,7 @@ const appRoutes: Routes = [
 	{ path: 'login', component: LoginComponent },
 	{ path: 'profile', component: ProfileComponent, canActivate: [ AuthGuard ] },
 	{ path: 'customers', component: CustomersComponent, canActivate: [ AuthGuard ] },
-	{ path: 'customers/profile/:id', component: CustomerDetailComponent, canActivate: [ AuthGuard ] }
+	{ path: 'customer-detail/:id', component: CustomerDetailComponent, canActivate: [ AuthGuard ] }
 ];
 
 @NgModule({

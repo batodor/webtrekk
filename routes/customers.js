@@ -49,14 +49,4 @@ router.delete('/delete/:id', (req, res, next) => {
 	});
 });
 
-router.get('/profile/:id', (req, res, next) => {
-	Customer.getCustomer(req.params.id, (err, customer) => {
-		if (err) {
-			res.json({ success: false, msg: 'Failed to load Customer' });
-		} else {
-			res.json(customer);
-		}
-	});
-});
-
 module.exports = router;

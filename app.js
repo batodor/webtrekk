@@ -23,6 +23,7 @@ const app = express();
 
 const users = require('./routes/users');
 const customers = require('./routes/customers');
+const customerDetail = require('./routes/customer-detail');
 
 // Port Number
 const port = process.env.PORT || 8080;
@@ -45,6 +46,7 @@ require('./config/passport')(passport);
 
 app.use('/users', users);
 app.use('/customers', customers);
+app.use('/customer-detail', customerDetail);
 
 // Index Route
 app.get('/', (req, res) => {

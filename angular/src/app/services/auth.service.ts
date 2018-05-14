@@ -7,7 +7,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 export class AuthService {
 	authToken: any;
 	user: any;
-	//private readonly API_URL = 'http://localhost:3000/users/';
+	// private readonly API_URL = 'http://localhost:3000/users/';
 	private readonly API_URL = 'users/';
 
 	constructor(private http: Http) {}

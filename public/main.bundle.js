@@ -130,7 +130,7 @@ var appRoutes = [
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_9__components_login_login_component__["a" /* LoginComponent */] },
     { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_23__guards_auth_guard__["a" /* AuthGuard */]] },
     { path: 'customers', component: __WEBPACK_IMPORTED_MODULE_13__components_customers_customers_component__["a" /* CustomersComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_23__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'customers/profile/:id', component: __WEBPACK_IMPORTED_MODULE_14__components_customer_detail_customer_detail_component__["a" /* CustomerDetailComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_23__guards_auth_guard__["a" /* AuthGuard */]] }
+    { path: 'customer-detail/:id', component: __WEBPACK_IMPORTED_MODULE_14__components_customer_detail_customer_detail_component__["a" /* CustomerDetailComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_23__guards_auth_guard__["a" /* AuthGuard */]] }
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -369,7 +369,7 @@ var CustomersComponent = /** @class */ (function () {
         this.loadData();
     };
     CustomersComponent.prototype.customerDetail = function (customerID) {
-        this.router.navigate(['/customers/profile/' + customerID]);
+        this.router.navigate(['/customer-detail/' + customerID]);
     };
     CustomersComponent.prototype.addNew = function () {
         var _this = this;
@@ -1243,7 +1243,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AuthService = /** @class */ (function () {
     function AuthService(http) {
         this.http = http;
-        //private readonly API_URL = 'http://localhost:3000/users/';
+        // private readonly API_URL = 'http://localhost:3000/users/';
         this.API_URL = 'users/';
     }
     AuthService.prototype.registerUser = function (user) {
@@ -1315,8 +1315,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var CustomerDetailService = /** @class */ (function () {
     function CustomerDetailService(http) {
         this.http = http;
-        //private readonly API_URL = 'http://localhost:3000/customers/';
-        this.API_URL = 'customers/';
+        // private readonly API_URL = 'http://localhost:3000/customer-detail/';
+        this.API_URL = 'customer-detail/';
     }
     CustomerDetailService.prototype.getCustomer = function (id) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
@@ -1361,7 +1361,7 @@ var CustomersService = /** @class */ (function () {
     function CustomersService(httpClient, flashMessage) {
         this.httpClient = httpClient;
         this.flashMessage = flashMessage;
-        //private readonly API_URL = 'http://localhost:3000/customers/';
+        // private readonly API_URL = 'http://localhost:3000/customers/';
         this.API_URL = 'customers/';
         this.dataChange = new __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__["a" /* BehaviorSubject */]([]);
     }

@@ -4,8 +4,8 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class CustomerDetailService {
-	//private readonly API_URL = 'http://localhost:3000/customers/';
-	private readonly API_URL = 'customers/';
+	// private readonly API_URL = 'http://localhost:3000/customer-detail/';
+	private readonly API_URL = 'customer-detail/';
 	constructor(private http: Http) {}
 
 	getCustomer(id) {
