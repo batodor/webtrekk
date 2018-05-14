@@ -24,8 +24,12 @@ module.exports.listCustomers = function({}, callback) {
 };
 
 module.exports.addCustomer = function(newCustomer, callback) {
-	Customer.findOne({}, {}, { sort: { created_at: -1 } }, function(err, lastCustomer) {
-		const newID = lastCustomer.customerID + 1;
+	Customer.findOne({}, {}, { sort: { customerID: -1 } }, function(err, lastCustomer) {
+		let newID = 1;
+		if (lastCustomer) {
+			newID = lastCustomer.customerID + 1;
+		}
+		newCustomer.customerID = newID;
 		newCustomer.save(callback);
 	});
 };
